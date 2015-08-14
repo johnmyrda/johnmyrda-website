@@ -1,0 +1,463 @@
+<!--#include virtual="/ssi/header.html" -->
+
+<script>
+	document.title = "John Myrda - Speed Settlers Game Timer";
+</script>
+
+
+<div class="article">
+
+	<h1>Speed Settlers Game Timer</h1>
+	<br>
+
+    <p>If you only want to see the pictures of this project, check out the <a href="http://imgur.com/a/ZAWAg">gallery on imgur</a>.</p>
+    
+	<div class="two-column">
+		<div class="column50">
+			<h3>Tools:</h3>
+			<ul>
+				<li>Soldering Iron and solder</li>
+				<li>Dremel with cutting disk</li>
+				<li>Razor blade</li>
+				<li>Drill</li>
+				<li>Respiratory protection</li>
+				<ul>
+					<h4>Optional:</h4>
+					<li>De-soldering tool</li>
+					<li>filing tools</li>
+					<li>clamp</li>
+				</ul>
+			</ul>		
+		</div>
+		<div class="column50">
+			<h3>Hardware:</h3>
+			<ul>
+				<li><a href="http://www.staples.com/Staples-Easy-Button/product_606396">Staples "Easy" Button</a></li>
+				<li><a href="http://www.ti.com/ww/en/launchpad/launchpads-msp430-msp-exp430g2.html">TI MSP430 MicroController (MSP430G2553)</a></li>
+				<li><a href="http://www.mouser.com/ds/2/427/tdsg11-240381.pdf">Three 7 Segment LED display - TDSO1150</a></li>
+				<li><a href="http://www.radioshack.com/product/index.jsp?productId=2062640">Super Tiny Wiring</a></li>
+				<li>Three 2N3906 PNP Transistors</li>
+				<li>Eight 100 Ω and Three 390 Ω Resistors</li>
+			</ul>
+		</div>
+	</div>
+
+	<br>
+	<p>I love playing Settlers of Catan with my friends. That said, I do have some problems with the game. Namely, my friends sometimes take <i>forever</i> on their turns, and other times I'm not playing well and I just want the game to end as soon as possible. These issues inspired me to come up with a new way to play that might solve these problems.</p>
+
+	<p>I call it "Speed Settlers". The idea is that each turn only lasts a limited amount of time, thus moving the game along. I tried playing it with a smartphone timer app, but messing around with the app timer distracted from the game. What I really needed was a big red buzzer with a countdown timer. I decided to build it.</p>
+
+	<div class="slideshow-container">
+		<!-- prev link -->
+		<!-- slideshow -->
+		<div class="cycle-slideshow" 
+			data-cycle-slides="> a"
+			data-cycle-caption="#set1-caption"
+			data-cycle-caption-template="{{title}}"
+            data-cycle-auto-height="false"
+			>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set1-img1.jpg" data-lightbox="easy_button-set1" title="My friends and I love playing Settlers, but sometimes the games can drag. That's why we came up with a variant I like to call &quot;Speed Settlers&quot;">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set1-img1-thumb.jpg"></a>
+			
+		</div>
+		<div id="set1-caption" class="slideshow-caption"></div>
+	</div>
+
+	<div class="slideshow-container">
+		<!-- prev link -->
+		<!-- slideshow -->
+		<div class="cycle-slideshow" 
+			data-cycle-slides="> a"
+			data-cycle-caption="#set1-1-caption"
+			data-cycle-caption-template="{{title}}"
+            data-cycle-auto-height="false"
+			>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set1-img2.jpg" data-lightbox="easy_button-set1" title="The Easy Button was a great base for this project. It contains all of the basic components that I needed, including a power source, on/off switch, speaker, and of course the big red button.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set1-img2-thumb.jpg"></a>
+			
+		</div>
+		<div id="set1-1-caption" class="slideshow-caption"></div>
+	</div>
+	
+	<p>The Staples "Easy Button" was the perfect base for the project. It already had almost everything I needed! The Easy Button contains a speaker, battery compartment, on/off switch, and of course, a button. With a properly programmed microcontroller, the button could do exactly what I needed. I chose the MSP430 platform (TI Launchpad) for this project because there exists an IDE for that is virtually identical to the <a href="http://arduino.cc/en/main/software">Arduino IDE</a>, which I was already familiar with. Additionally, the Launchpad uses less power than the Arduio. The drawback is that it's also slower than the Arduino, but it was more than fast enough for this project. The microcontroller chip used was the MSP430G2553.</p>
+	
+	<p>The button needed a display for the countdown timer. I used the <a href="http://www.mouser.com/ProductDetail/Vishay-Semiconductors/TDSO1150/?qs=eYIhD8NViE1AOTGvXuhtdA==">TDSO1150 7 segment display</a> because it's tiny and bright.  I used three of these 7 segment displays to create a display capable of displaying numbers 000 through 999. I was able to fit this LED display in the housing of the Easy Button without much issue. The wire that I used (which will forever be the bane of my existence) was <a href="http://www.radioshack.com/product/index.jsp?productId=2062640">30 gauge wire I found at Radioshack</a>. The small diameter was a gift and a curse. I also used some simple pushbutton switches so that I could set the countdown time easily.</p>
+
+	<div class="slideshow-container">
+		<!-- prev link -->
+		<div class="slideshow-prev" id="set2-prev"></div>
+		<!-- slideshow -->
+		<div class="cycle-slideshow" 
+			data-cycle-fx="scrollHorz"
+			data-cycle-timeout="0"
+			data-cycle-prev="#set2-prev"
+			data-cycle-next="#set2-next"
+			data-cycle-auto-height="false"
+			data-cycle-slides="> a"
+			data-cycle-caption="#set2-caption"
+			data-cycle-caption-template="{{title}}"
+			data-cycle-log="false"
+			>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set2-img1.jpg" data-lightbox="easy_button-set2" title='These LEDs worked well as the timer display for this project, though due to their small size they were quite difficult to solder to the wires. They are the TDSO1150 red-orange LED, and the datasheet can be found at <a href="http://www.mouser.com/ds/2/427/tdsg11-240381.pdf">http://www.mouser.com/ds/2/427/tdsg11-240381.pdf</a>'>
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set2-img1-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set2-img2.jpg" data-lightbox="easy_button-set2" title="I used an old PCB I had lying around to solder all of the resistors and transistors to for the control circuit.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set2-img2-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set2-img3.jpg" data-lightbox="easy_button-set2" title="When coding, I focused first on getting individual LEDs to light up. In this picture you can tell that some wires are crossed because there are segments lighting up that aren't supposed to.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set2-img3-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set2-img4.jpg" data-lightbox="easy_button-set2" title="After a bit more code, I got multiplexing working so that I could light up all of the LED displays at once. The refresh rate is about 85 Hz.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set2-img4-thumb.jpg"></a>			
+			
+		</div>
+		<div id="set2-caption" class="slideshow-caption"></div>
+		<div class="slideshow-next" id="set2-next"></div>
+	</div>	
+	
+	<p>The most difficult part of this project was figuring out how to wire and use the LED displays. The <a href="http://www.mouser.com/ds/2/427/tdsg11-240381.pdf">datasheet</a> was helpful in providing information on how to light up individual segments, but I needed to drive three of these 7 segment displays simultaneously. There are not enough pins on the MSP430G2553 to light up 21 individual segments (there are only 20 pins total!), so I decided to use a <a href="http://en.wikipedia.org/wiki/Multiplexing">multiplexing</a> solution. Multiplexing allowed me to use 7 pins to control which segments were lit up and 3 control pins to decide which 7 segment display was lit up at any particular time. Wiring this circuit allowed me to turn on the displays individually and quickly alternate between which display was lit up. Using this method I was able to achieve an 85Hz refresh rate per display. This <a href="http://maxembedded.com/2013/01/30/seven-segment-multiplexing/">embedded electronics blog</a> was helpful in providing an understanding of how to create a multiplexing circuit and what the code for such a circuit looks like.</p>		
+	
+	<p>The circuit used for multiplexing uses eight of the MSP430G2553's pins to light up individual LEDs on the seven segment displays (seven pins for the segments, one for the dot). The displays used are common anode displays, which necessitated the use of PNP transistors. This choice is also why some of the code may seem backwards. With common anode displays, a <code>HIGH</code> signal on a pin turns the segment off, and <code>LOW</code> turns a segment on. Three of the microcontroller's lines are dedicated to the transistors, and these control lines are used to turn individual displays on or off. The resistors used with the LED displays were chosen to maximize brightness, and the resistors used on the base of the transistors were chosen based on blogs that I read which used similar equipment.</p>
+	
+	<div class="slideshow-container">
+		<!-- prev link -->
+		<div class="slideshow-prev" id="set3-prev"></div>
+		<!-- slideshow -->
+		<div class="cycle-slideshow" 
+			data-cycle-fx="scrollHorz"
+			data-cycle-timeout="0"
+			data-cycle-prev="#set3-prev"
+			data-cycle-next="#set3-next"
+			data-cycle-auto-height="false"
+			data-cycle-slides="> a"
+			data-cycle-caption="#set3-caption"
+			data-cycle-caption-template="{{title}}"
+			data-cycle-log="false"
+			>
+
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-schematic.png" data-lightbox="easy_button-set3" title="A simplified schematic of the circuit used in this project. Details the circuitry used to control the three seven segment LED displays.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-schematic-thumb.png"></a>
+			
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set3-img1.jpg" data-lightbox="easy_button-set3" title="Using a multimeter, I figured out which contacts to use with the Easy Button's main button. I soldered wires in the appropriate spots and connected them to the microcontroller.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set3-img1-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set3-img2.jpg" data-lightbox="easy_button-set3" title="These holes were used to mount some simple tactile pushbutton switches. I glued the buttons on to relieve undue stress from using the buttons.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set3-img2-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set3-img3.jpg" data-lightbox="easy_button-set3" title="I used a wire wrap technique to connect the wires to the DIP socket. After wrapping each pin I soldered on the wire for a more solid and stable connection. I had to snip off the legs of the socket to get it to fit inside the button.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set3-img3-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set3-img4.jpg" data-lightbox="easy_button-set3" title="The legs all needed to be snipped to fit inside the button housing. Also, this imagae shows the transistor and resistor based control circuit for the LED multiplexing.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set3-img4-thumb.jpg"></a>			
+			
+		</div>
+		<div id="set3-caption" class="slideshow-caption"></div>
+		<div class="slideshow-next" id="set3-next"></div>
+	</div>	
+
+	<p>I spent a long of time thinking about the user interface of the button. At one point I even drew a <a href="http://en.wikipedia.org/wiki/Deterministic_finite_automaton">DFA diagram</a> describing the user interface, which was less than useful once I realized there are essentially only two button states: "Countdown" and "Time Setting". The idea of "Countdown mode" is simple: have the display count down to zero from a specified number of seconds and play a tone once the timer reaches 0. The countdown time is between 1 and 999 since those are the limits of the three LED displays. Programming "Countdown mode" was simple once I had figured out how to detect edge interrupts to see when the Easy Button was pressed. For more on that, check out the Code Review section.</p>
+	
+	<p>Given that are two execution modes for the button, a way to switch between modes was needed. Switching modes is accomplished by holding down the Easy Button for an extended length of time. The logic for "Time Setting mode" required more complexity than the "Countdown mode". I used two pushbuttons to increment digits in the time setting mode. Pressing one of the pushbuttons changes which digit is selected. The digit that is currently selected flashes in order to indicate the selection. Pressing the other pushbutton increments the selected digit by one, and the selected digit wraps from 9 to 0. This approach leads to very quick timer setting since you don't have to scroll through all 1000 possible numbers available on the LED display to set a time, you instead set the digits in the hundreds, tens, and ones places separately.</p>
+
+	<div class="slideshow-container">
+		<!-- prev link -->
+		<div class="slideshow-prev" id="set4-prev"></div>
+		<!-- slideshow -->
+		<div class="cycle-slideshow" 
+			data-cycle-fx="scrollHorz"
+			data-cycle-timeout="0"
+			data-cycle-prev="#set4-prev"
+			data-cycle-next="#set4-next"
+			data-cycle-auto-height="false"
+			data-cycle-slides="> a"
+			data-cycle-caption="#set4-caption"
+			data-cycle-caption-template="{{title}}"
+			data-cycle-log="false"
+			>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set4-img1.jpg" data-lightbox="easy_button-set4" title="After a lot of careful cutting and filing, I managed to fit everything together. Here's the contraption with its top off. In the background you can see the springs used to provide a satisfying tactile sensation for the Easy Button.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set4-img1-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set4-img2.jpg" data-lightbox="easy_button-set4" title="An action shot of the countdown timer all put together. Thanks to the battery compartment it is completely standalone. ">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set4-img2-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set4-img3.jpg" data-lightbox="easy_button-set4" title="The push-button switches used to set the countdown time for the button.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set4-img3-thumb.jpg"></a>		
+			
+		</div>
+		<div id="set4-caption" class="slideshow-caption"></div>
+		<div class="slideshow-next" id="set4-next"></div>
+	</div>		
+	
+	<p>To complete the project, the MSP430G2553 needed to work when not attached to the programmer board. Attaching the reset pin to the ground pin accomplishes this. It took a lot of careful cutting, filing, and soldering, but eventually everything came together and the Speed Settlers button was a reality!</p>
+
+<!-- including relevant syntax highlighting javascript pieces -->
+<script type="text/javascript" src="/js/prism.js"></script>
+<link href="/css/prism.css" rel="stylesheet" type="text/css" />
+	
+<h3>Code Review:</h3>
+
+<p>This project uses the TI Launchpad platform, specifically the MSP-EXP430G2 kit which comes with two microcontrollers. The MSP430G2553 was used for this project. More information can be found on <a href="http://www.ti.com/tool/msp-exp430g2">TI's website</a></p>
+
+<p>My programming environment during this project was the <a href="http://energia.nu/">Energia</a> editor, which is an IDE for the MSP430/TI Launchpad based on the Arduino IDE. When I was working on this project, the latest Energia release was 0101E0009. There were many challenges to overcome when programming the microcontroller. I found the <a href="http://forum.43oh.com/">energia forums</a> a valuable resource, as well as various blogs that I found along the way.</p>
+
+<h4>Energia IDE</h4>
+
+<p>The <a href="http://energia.nu/reference/">Energia IDE language</a> is based on C/C++, so all of the code that follows in this article will be similar to C code. The IDE has two special functions that are worth mentioning, and they are <code>setup()</code> and <code>loop()</code>. Code that should be run to prepare the environment of the microcontroller is to be placed in <code>setup()</code>, after which the <code>loop()</code> function takes over and runs repeatedly as long as the microcontroller is on. The <code>loop()</code> function bears many similarities to a <code>while(true)</code> loop.</p>
+
+<h4>Initial <code>setup()</code> Function and Global Variables</h4>
+
+The global variables used in the code are used for configuration and tracking of state changes. The configuration variables are contained in the following code.
+
+<p><pre class="line-numbers"><code class="language-c">
+//melody and timing are used for playing a tune when the countdown reaches 0
+int melody[] = {
+  NOTE_A5, NOTE_A5, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_D4, NOTE_CS4};
+int timing[] = {4,8,8,8,8,8,8};
+
+//hold_time_threshold refers to how long the Easy Button needs to be held in
+//order to switch between Countdown and Time Setting modes
+const int hold_time_threshold = 256;//in (seconds / 256)
+
+//How fast a selected digit will blink in Time Setting mode
+//blink rate in HZ is: (512 / blink_rate) Hz;
+const int blink_rate = 128; 
+</code></pre></p>
+
+<p>In retrospect I could have named the blink rate variable more clearly, since it's actually the inverse of the blink rate in Hz. The other state defining global variables were all labelled volatile since I expected them to be changing regularly.</p>
+
+<p><pre class="line-numbers"><code class="language-c">
+volatile int easy_button_hold_time = 0;
+volatile int display_number = 0;
+volatile byte mode;
+volatile byte selected_digit;
+volatile byte hundreds, tens, ones;
+volatile boolean easy_button_pressed = false;
+volatile boolean button1_pressed = false;
+volatile boolean button2_pressed = false;
+volatile boolean mode_toggled = false;
+
+int countdown_time = 0;
+</code></pre></p>
+
+<p>The "Time Setting" mode is the reason why there seem to be several different ways the time being displayed is represented. Display number is the actual current number being represented. The hundreds, tens, and ones variables are used because it makes it easier to update the different 7 segment displays individually. The countdown time is actually the time the counter resets to when pressed, the time that is allowed per turn of game play.</p>
+
+<p>The <code>setup()</code> contains the code that initializes the microcontroller and gets it in to a usable state. About half of the lines are initializing the various pins that are connected to physical devices. I'll put snippets of the <code>setup()</code> function in various sections when and where they are relevant.</p>
+
+<h4>Countdown and Set Timer Modes</h4>
+
+<p>Once the microcontroller is initialized, energia executes the <code>loop()</code> function. Here's my main loop function:</p>
+
+<p><pre class="line-numbers"><code class="language-c">
+void loop() {
+  switch(mode){
+    case SET_TIMER:
+      set_timer();
+      break;
+    case COUNTDOWN:
+      countdown();
+      break;
+  }
+}
+</code></pre></p>
+
+<p>Not very exciting, it's just a switch statement that breaks in to the two modes. The logical next step most would take to try and understand the code would be taking a look at the <code>countdown()</code> and <code>set_timer()</code> functions. Unfortunately, those functions are little more than <code>while</code> loops with some code to handle entering and exiting the function. The heart of this code is actually in the <code>RTC_ISR()</code> function. RTC stands for Real Time Clock and ISR means Interrupt Service Routine. Most of the button is driven by timer interrupts, as well as some button interrupts.</p>
+
+<h4>Keeping Time</h4>
+
+<p>There are three timers contained on MSP430. There's a Timer A, Timer B, and a Watchdog timer. More information about the timers can be found via TI's official documentation <a href="http://www.ti.com/lit/an/slaa076a/slaa076a.pdf">here</a> and <a href="http://www.ti.com/lit/ml/slap113/slap113.pdf">here</a>. I accessed Timer A via an RTC <a href="http://forum.43oh.com/topic/3375-energia-library-msp430-real-time-clock/">timekeeping library</a> I found on the Energia forums. I edited the file <a href="RTCconfig.h">RTCconfig.h</a> to choose the Timer to use and specify that I needed subsecond accuracy. The RTC library was accurate to 1/256th of a second, which was useful to multiplex for the 7 segment LED displays. Using a Real Time Clock made the countdown logic relatively simple, and also allowed me to use an interrupt driven design to create a decent looking LED display with an 85Hz refresh rate.</p>
+
+<p>The RTC library contains the <code>RTC_ISR()</code> function that executes on every clock tick. Since clock ticks are running at 256 Hz, any code placed in the <code>RTC_ISR</code> should be short and use as little stack memory as possible to make sure it executes within one tick. This function also contains the code to switch the functioning mode of the button between "Countdown" mode and "Set Timer" mode.</p>
+
+<p><pre class="line-numbers"><code class="language-c">
+RTC_ISR(void){
+   display_timer.Inc();
+   countdown_timer.Inc();
+   easy_button_hold_time++;
+   if(easy_button_hold_time > hold_time_threshold && digitalRead(EASY_BUTTON) == LOW && mode_toggled == false){
+     toggle_mode();
+     mode_toggled = true;
+   }
+   int time = display_timer.RTC_chunk;
+   byte digit = time % 3; // there are three 7-segment LEDs and I want them to fire in sequence
+   write_display(digit);
+}
+</code></pre></p>
+
+<p>One mistake I made in this code was with the <code>mode_toggled</code> variable. It should be set to true within the <code>toggle_mode()</code> function. Alternatively, the variable could be removed from the code entirely. It is only used as an extra check to make sure the Easy Button is actually held down, but other parts of the code already serve that function.</p>
+
+<h4>Buttons, Interrupted</h4>
+
+<p>This project is quite clearly button based. The large red Easy Button and the two pushbuttons used for setting time are integrated into the code via edge interrupts. Below is the code used with the Easy Button. The code relating to the pushbuttons contains many similarities, though the functions that are triggered are obviously different. I found that by handling the interrupts in this way, <a href="http://www.labbookpages.co.uk/electronics/debounce.html">debouncing</a> was not much of an issue in practice. Using edge interrupts made it easy to know exactly when the button was being held down and when it was released. I needed this information so I could to use a "long press" on the Easy Button to switch modes between "Countdown" and "Set Timer". The trick used to toggle the interrupt mode in the following code is necessary because the Energia only supports rising and falling interrupt modes, but not an all encompassing "change" interrupt. Since I need to know how long the Easy Button is held down for, I flip interrupt modes on every interrupt to catch when the button state changes.</p>
+
+<p><pre class="line-numbers"><code class="language-c">
+pinMode(EASY_BUTTON, INPUT_PULLUP); //EASY button
+attachInterrupt(EASY_BUTTON, easy_interrupt, FALLING);
+
+void easy_interrupt(){
+  //rising
+  if(digitalRead(EASY_BUTTON) == HIGH && easy_button_pressed){
+    mode_toggled = false;
+    easy_button_pressed = false;
+  }
+  //falling
+  else if(digitalRead(EASY_BUTTON) == LOW && easy_button_pressed == false){
+    countdown_timer.Set_Time( 0, 0, 0 );
+    easy_button_hold_time = 0;
+    easy_button_pressed = true; 
+  }    
+  
+  //toggles the interrupt mode - clever trick from http://forum.43oh.com/topic/3657-interrupts-on-the-energia/
+  P2IES=(P2IES & ~B00001000) | (P2IN & B00001000);
+}
+</code></pre></p>
+
+<h4>Displaying Digits</h4>
+<p>This <a href="http://www.hacktronics.com/Tutorials/arduino-and-7-segment-led.html">hacktronics article</a> provided much of the code I modified for use with my seven segment display. I used a 2d array to keep track of what segments needed to be lit up for the corresponding digits, and writing to the display just meant updating which segments were on or off given a digit. The function sevenSegWrite takes in a digit_value as an argument and lights up the parts of the seven segment display that correspond to that digit. Because I wired the seven segments sequentially, I am able to use a for-loop to change the segments on the 7 segment display. This logic only applies to a single LED display.</p>
+
+<p><pre class="line-numbers"><code class="language-c">
+byte seven_seg_digits[11][8] = { { 0,0,0,1,0,0,1,0 },  // = 0
+                              { 1,1,0,1,0,1,1,1 },  // = 1
+                              { 0,0,1,1,0,0,0,1 },  // = 2
+                              { 1,0,0,1,0,0,0,1 },  // = 3
+                              { 1,1,0,1,0,1,0,0 },  // = 4
+                              { 1,0,0,1,1,0,0,0 },  // = 5
+                              { 0,0,0,1,1,0,0,0 },  // = 6
+                              { 1,1,0,1,0,0,1,1 },  // = 7
+                              { 0,0,0,1,0,0,0,0 },  // = 8
+                              { 1,0,0,1,0,0,0,0 },  // = 9
+                              { 1,1,1,1,1,1,1,1 }   // = blank (10)
+                                                };
+void setup() {
+  pinMode(2, OUTPUT); //7 Segment display (TDSO1150) pin 1  
+  pinMode(3, OUTPUT); //pin2
+  pinMode(4, OUTPUT); //pin4
+  pinMode(5, OUTPUT); //pin5
+  pinMode(6, OUTPUT); //pin6
+  pinMode(7, OUTPUT); //pin7
+  pinMode(8, OUTPUT); //pin9
+  pinMode(9, OUTPUT); //7 Segment display pin 10
+  //start with all segments off
+  writeDot(1);  // start with the "dot" off
+  for (byte i = 2; i <=9; i++){
+    digitalWrite(i, HIGH);
+  }  
+}
+
+void sevenSegWrite(byte digit_value) {
+  byte pin = 2;
+  for (byte segCount = 0; segCount < 8; ++segCount) {
+      digitalWrite(pin, seven_seg_digits[digit_value][segCount]);
+    ++pin;
+  }
+}
+</code></pre></p>
+
+<p>The TDSO1150 displays that I used are a "common anode" seven segment display, meaning that voltage comes in through an anode and setting a segment to <code>HIGH</code> turns off the segment, while <code>LOW</code> turns the segment on. This is why some of the code in this section may seem backwards, such as how the array for blanking the display is <code>{ 1,1,1,1,1,1,1,1 }</code>. Multiplexing three LED displays required the use of three pins as control signals. In the <code>RTC_ISR()</code> I used a simple modulo to switch which digit was to be actively displayed. Since the RTC_chunk was always a number between 0-255, this worked well. Technically this method means that when the number rolls over from 255 to 0  the "ones" place 7 segment display gets lit up twice in a row, but in practice it looks just fine.  Using enums and separate ones, tens, and hundreds variables made this part of the code simple to write at the expense of a little more complexity in the <code>modify_display_number()</code> function.</p>
+
+<p><pre class="line-numbers"><code class="language-c">
+//relevant globals
+enum { ONES, TENS, HUNDREDS };
+volatile byte hundreds, tens, ones;
+
+void setup() {
+  pinMode(13, OUTPUT); //7 segment display-1 control
+  pinMode(14, OUTPUT); //display-2 control
+  pinMode(15, OUTPUT); //display-3 control
+}
+
+RTC_ISR(void){
+   ...not relevant code...
+   int time = display_timer.RTC_chunk;
+   byte digit = time % 3; // there are three 7-segment LEDs and I want them to fire in sequence
+   write_display(digit);
+}
+
+void write_display(byte digit){
+  if(digit == ONES){
+    digitalWrite(13, HIGH);
+    digitalWrite(14, HIGH);
+    digitalWrite(15, LOW);
+    if(digit_blink_state[ONES] == true && display_timer.RTC_chunk % blink_rate < (blink_rate/2))
+      sevenSegWrite(BLANK);
+    else
+      sevenSegWrite(ones);    
+  }
+  else if(digit == TENS){
+    digitalWrite(13, HIGH);
+    digitalWrite(15, HIGH);
+    digitalWrite(14, LOW);
+    if(digit_blink_state[TENS] == true && display_timer.RTC_chunk % blink_rate < (blink_rate/2))
+      sevenSegWrite(BLANK);
+    else    
+      sevenSegWrite(tens);    
+  }
+  else if(digit == HUNDREDS){
+    digitalWrite(15, HIGH);
+    digitalWrite(14, HIGH);
+    digitalWrite(13, LOW);
+    if(digit_blink_state[HUNDREDS] == true && display_timer.RTC_chunk % blink_rate < (blink_rate/2))
+      sevenSegWrite(BLANK);
+    else    
+      sevenSegWrite(hundreds);
+  }
+  else return;
+}
+</code></pre></p>
+
+<h4>Using Flash Memory</h4>
+
+<p>The MSP430G2553 has 16KB of flash memory. I needed 2 bytes of that to save the countdown time that was previously set. I found a library called <a href="https://github.com/energia/Energia/tree/master/hardware/msp430/libraries/MspFlash">MspFlash</a> meant for use with Energia that made it easy to access the flash memory contained on the chip. I load the previously set countdown time from the flash memory upon startup of the microcontroller and write the flash memory each time the mode is switched back to "Countdown" mode. The action of changing selected digits and setting the time to different numbers is handled via the pushbutton interrupt calls.</p>
+
+<p><pre class="line-numbers"><code class="language-c">
+Flash.read(flash, (unsigned char *)(&countdown_time), sizeof(int));
+
+void set_timer(){
+  set_blink(selected_digit, 1);
+  set_display_number(countdown_time);  
+  while(mode == SET_TIMER){
+  }
+  set_blink(selected_digit, 0);  
+  set_countdown_time();
+}
+
+void set_countdown_time(){//sets countdown time to current display number
+  countdown_time = get_display_number();
+  Flash.erase(flash);
+  Flash.write(flash, (unsigned char *)(&countdown_time), sizeof(int));
+}
+</code></pre></p>
+
+	<h3>Conclusions and what to change:</h3>
+	
+	<p>If I were to do this project again, I'd certainly change a few things. A custom PCB to wire and solder the 7-Segment LEDs to would be entirely worthwhile, as the spacing of the pins on the back of the LEDs didn't fit in to normal perfboard and soldering 30 gauge wire to such small contacts was very difficult. A custom PCB would also allow me to use less wires overall and make the whole design easier to debug and more robust. If possible, I'd definitely want to use a thicker gauge wire, as well. 30 gauge wire was very difficult to work with and too easy to break. A different wiring route might that causes less stress on the wires would probably be worthwhile also. Currently, when the Easy Button is pushed some of that force will press down on the wires. I suspect this is part of the reason the LED wire signals got crossed. Essentially, if I were to do this project again I'd spend more time thinking and planning out the wiring. A bigger case might also help with this, though I don't know that I could find another big red button as iconic as the Easy Button.</p>
+
+	<h3>Code Files:</h3>
+	<ul>
+	<h5>All of the code used to program the functionality of the button</h5>
+	<li><a href="speed_settlers_002.ino">speed_settlers_002.ino</a></li>
+	<h5>The configuration file for the Real Time Clock library</h5>
+	<li><a href="RTCconfig.h">RTCconfig.h</a></li>
+	</ul>
+	<br>
+	<h3>References:</h3>
+	<ul>
+		<li><a href="http://www.ti.com/lit/an/slaa076a/slaa076a.pdf">Implementing a Real-Time Clock on the MSP430 (.pdf)</a></li>
+		<li><a href="http://www.ti.com/lit/ml/slap113/slap113.pdf">MSP430 Timers In-Depth (.pdf)</a></li>
+		<li><a href="http://www.mouser.com/ProductDetail/Vishay-Semiconductors/TDSO1150/?qs=eYIhD8NViE1AOTGvXuhtdA==">Mouser Product Page for TDSO1150</a></li>
+		<li><a href="http://www.mouser.com/ds/2/427/tdsg11-240381.pdf#datasheet">TDSO1150 Datasheet</a></li>
+		<li><a href="http://forum.43oh.com/topic/3657-interrupts-on-the-energia/">Forum Post Regarding Interrupts on the Energia</a></li>
+		<li><a href="http://www.hacktronics.com/Tutorials/arduino-and-7-segment-led.html">Arduino and 7 Segment LED Hacktronics Tutorial</a></li>
+		<li><a href="http://forum.43oh.com/topic/3375-energia-library-msp430-real-time-clock/">[Energia Library] MSP430 Real Time Clock</a></li>
+		<li><a href="https://github.com/energia/Energia/tree/master/hardware/msp430/libraries/MspFlash">[Energia Library] Github Repository for MspFlash Libary</a></li>
+	</ul>
+	
+</div>
+
+<!--#include virtual="/ssi/projects-navigation-comments.shtml" -->
+
+<!--#include virtual="/ssi/footer.html" -->

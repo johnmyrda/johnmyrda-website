@@ -1,0 +1,9 @@
+<!--#include virtual="/ssi/header.html" -->
+
+    <h1>dev.johnmyrda.com</h1>
+    <p>This domain will be used as a dev environment for johnmyrda.com</p>
+	<p>Most things here are WIP, so expect things to be broken.</p>
+	<div style="clear: both;"></div>
+	<br>
+<!--#include virtual="/ssi/project-list.html" -->			
+<!--#include virtual="/ssi/footer.html" -->		

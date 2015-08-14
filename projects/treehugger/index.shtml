@@ -1,0 +1,197 @@
+<!--#include virtual="/ssi/header.html" -->
+
+<script>
+	document.title = "John Myrda - Hug a Tree!";
+</script>
+
+<div class="article">
+<h1>Hug a Tree!</h1>
+<br>
+<h2>Project Concept:</h2>
+<p>My friend <a href="http://emelynbaker.com/">Emelyn</a> is a fantastic designer, and also an unapologetic tree hugger (literally). The "Hug a Tree!" project is a proof-of-concept of a design envisioned by Emelyn.  We were looking to create an experience - specifically one that allows you to tell a tree how you really feel about it. The idea is that someone can hug a tree, tell the tree what they feel, and the audio of the exchange is uploaded to <a href="https://soundcloud.com/">SoundCloud</a>.</p>
+
+	<div class="slideshow-container">
+		<!-- prev link -->
+		<!-- slideshow -->
+		<div class="cycle-slideshow" 
+			data-cycle-slides="> a"
+			data-cycle-caption="#set1-caption"
+			data-cycle-caption-template="{{title}}"
+            data-cycle-auto-height="false"
+			>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/treehugger/treecore-concept.png" data-lightbox="treehugger-set1" title="We dubbed the project &quot;treecore&quot;. This image is concept art for what the final design might look like.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/treehugger/treecore-concept-thumb.jpg"></a>
+			
+		</div>
+		<div id="set1-caption" class="slideshow-caption"></div>
+	</div>
+
+<p>The Raspberry Pi was the platform of choice to facilitate this magical interaction. The Pi, a <a href="http://www.amazon.com/Blue-Microphones-Snowflake-USB-Microphone/dp/B0012AUHXW">USB Mic</a>, and some scraps from my electronics box helped bring this experience to life.</p>
+
+<h3>Materials:</h3>
+
+<ul>
+    <li><a href="http://www.raspberrypi.org/products/model-b/">Raspberry Pi Model B</a></li>
+    <li><a href="http://www.amazon.com/gp/product/B0012AUHXW/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B0012AUHXW&linkCode=as2&tag=wwwjohnmyrdac-20&linkId=7RBY4O2YZTEXJUKH">Blue Microphones Snowflake USB Microphone</a></li>
+    <li>Pushbutton switch</li>
+    <li>Red LED</li>
+    <li>100 Ohm resistor</li>
+    <li>Breadboard</li>
+</ul>
+
+<br>
+<h2>Implementation:</h2>
+
+<p>As this was only a proof-of-concept, most of the physical implementation lived on a breadboard. The idea is that when a button is pressed (or a tree is hugged), the microphone will start recording, and it will stop recording when the hug is over. I coded in a little wiggle room, also, so that if the hug or button press is momentarily interrupted then the recording doesn't stop immediately. There's also a red LED that lights up during recording.</p>
+
+	<div class="slideshow-container">
+		<!-- prev link -->
+		<!-- slideshow -->
+		<div class="cycle-slideshow" 
+			data-cycle-slides="> a"
+			data-cycle-caption="#set2-caption"
+			data-cycle-caption-template="{{title}}"
+            data-cycle-auto-height="false"            
+			>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/treehugger/pi-breadboard.jpg" data-lightbox="treehugger-set2" title="The Raspberry Pi and breadboard used to create the proof-of-concept.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/treehugger/pi-breadboard-thumb.jpg"></a>
+			
+		</div>
+		<div id="set2-caption" class="slideshow-caption"></div>
+	</div>
+
+<!-- including relevant syntax highlighting javascript pieces -->
+<script type="text/javascript" src="/js/prism.js"></script>
+<link href="/css/prism.css" rel="stylesheet" type="text/css" />
+
+<h2>Code:</h2>
+
+<p>I flashed the Raspberry Pi with the <a href="http://www.raspberrypi.org/downloads/">Raspbian</a> distribution of Linux.  The script I wrote used the <code><a href="https://docs.python.org/2/library/ossaudiodev.html">ossaudiodev</a></code> Python package, and for this to work properly with the microphone I first had to run the command '<code>sudo modprobe snd-pcm-oss</code>'. The code is relatively simple. The structure is similar to that of the Arduino IDE in that there is a <code>setup</code> portion and a <code>loop</code> portion that runs for the entirety of the time the device is on.</p>
+
+<h4>setup:</h4>
+<p><pre class="line-numbers"><code class="language-python">
+import ossaudiodev, wave, soundcloud, datetime
+import RPi.GPIO as GPIO
+
+BUTTON_PIN = 16
+LED_PIN = 11
+CHUNK = 1024
+RATE = 44100
+EXTRA_RECORD_SECONDS = 1
+CHANNELS = 1
+SAMPLE_WIDTH_BYTES = 2
+extra_record_time = int((2 * RATE / CHUNK * EXTRA_RECORD_SECONDS) + 1)
+cur_time = datetime.datetime.now()
+
+#set up GPIO pins for the button and LED
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(LED_PIN, GPIO.OUT)
+GPIO.setup(BUTTON_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+#create client object with app credentials
+client = soundcloud.Client(
+		client_id='id',
+		client_secret='secret',
+		username='user',
+		password='pass')
+
+#get playlist
+playlist = client.get('/resolve', url='https://soundcloud.com/xxxtreecorexxx/sets/tree-cozy-messages')
+tracks = list()
+for track in playlist.tracks:
+	tracks.append( {'id' : track['id']})
+</code></pre></p> 
+ 
+<p>In the setup, I import all of the required modules (including the third party GPIO and SoundCloud modules), then set up a bunch of constant variables that are required for doing the recording in a sensible way. If this were a more involved program, I'd probably wrap all of the recording functions up in to their own class. The rest of the code sets up the electronics connected to the Pi and connects to SoundCloud for uploading purposes.</p>
+
+	<div class="slideshow-container">
+		<!-- prev link -->
+		<!-- slideshow -->
+		<div class="cycle-slideshow" 
+			data-cycle-slides="> a"
+			data-cycle-caption="#set3-caption"
+			data-cycle-caption-template="{{title}}"
+            data-cycle-auto-height="false"
+			>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/treehugger/pi-diagram.png" data-lightbox="treehugger-set3" title="Wiring diagram for connections between the Raspberry Pi P1 header and breadboard circuit components.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/treehugger/pi-diagram-thumb.png"></a>
+			
+		</div>
+		<div id="set3-caption" class="slideshow-caption"></div>
+	</div>
+
+<h4>loop:</h4>
+
+<p><pre class="line-numbers"><code class="language-python">
+while True:
+	mic = ossaudiodev.open('/dev/audio1','r')
+	mic.setparameters(ossaudiodev.AFMT_S16_LE, CHANNELS, RATE)
+	frames = []
+	x = extra_record_time
+	#wait for a button to be pressed (and don't busy wait)
+	GPIO.wait_for_edge(BUTTON_PIN, GPIO.FALLING)
+	cur_time = datetime.datetime.now()
+	filename = cur_time.strftime("%Y-%m-%d %H:%M:%S")
+	filepath = filename + '.wav'
+	print("* recording")	
+	GPIO.output(LED_PIN, GPIO.HIGH)
+	
+	while x > 0:
+		data = mic.read(CHUNK)
+		frames.append(data)
+		if GPIO.input(16) == GPIO.LOW:
+			x = extra_record_time
+		else:
+			x = x - 1
+
+	print("* done recording")
+	GPIO.output(LED_PIN, GPIO.LOW)
+    #write the file
+	wave_file = wave.open(filepath, 'wb')
+	wave_file.setnchannels(CHANNELS)
+	wave_file.setsampwidth(SAMPLE_WIDTH_BYTES)
+	wave_file.setframerate(RATE)
+	wave_file.writeframes(b''.join(frames))
+	wave_file.close()
+    # finish writing file
+	return    
+	print '\'' + filename + '\' was written'
+	frames[:] = []
+	mic.close()
+	
+	print '* uploading to soundcloud'
+	#upload the track
+	new_track = client.post('/tracks', track={
+	'title' : filename,
+	'asset_data' : open(filepath, 'rb')
+	})
+	tracks.append({'id' : new_track.id})
+	#add track to set
+	client.put(playlist.uri, playlist={
+	'tracks' : tracks
+	})
+	print '* upload complete'
+</p></pre></code>
+
+<p>The main portion of the program resides in this '<code>while True:</code>' loop, but thanks to one of the GPIO functions (<code>GPIO.wait_for_edge()</code>), it's not a busy loop. Only when the button is pressed do further actions take place. If I were to expand upon this code, error handling would be a top priority. Specifically, I'd like to add code that would gracefully handle a failure to upload to SoundCloud and cache audio files for later so they are not lost.</p>
+
+<h2>Further Considerations:</h2>
+
+<p>There are quite a few things that would need to be done to take this project from proof-of-concept to a final stage. The mechanism that triggers a button press when the tree is hugged hasn't been created. Also, functionality to make sure that the script is runs when the Pi's boots up was not implemented.</p>
+
+<p>There are several concerns that need addressing in order to take the project outside. Serious weatherproofing would need to be done, since trees are usually found outside. The Pi needs power and networking to be of use in this situation, so wiring would need to be run to the tree. However, if might be possible to run the Pi on solar and battery, and WiFi could potentially be used instead of wired Ethernet.</p>
+
+<h4>Code Files:</h4>
+<ul>
+<h5>The Python script from the article</h5>
+<li><a href="treecore_article.py">treecore_article.py</a></li>
+</ul>
+
+</div>
+
+<!--#include virtual="/ssi/projects-navigation-comments.shtml" -->
+
+<!--#include virtual="/ssi/footer.html" -->

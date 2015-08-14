@@ -1,0 +1,344 @@
+<!--#include virtual="/ssi/header.html" -->
+
+<script>
+	document.title = "John Myrda - Raspberry Pi Game Boy";
+</script>
+
+<div class="article">
+	<h1>The <img src="nintendo_logo.png" height="38px" title=Nintendo> Piboy</h1>
+	<br>
+	<h2>Project Concept:</h2>
+	<p>Take the original Game Boy and replace the internals with a <a href="http://www.raspberrypi.org/faqs">Raspberry Pi</a>. Set it up to work as a portable emulation station that can be played with USB SNES controllers. If you ony want to see the picture of this project, check out the <a href="http://imgur.com/a/wXIba">gallery on imgur</a>.</p>
+	<br>
+	<div class="two-column">
+        <p>Disclaimer: Some of the below links are <a href="https://affiliate-program.amazon.com/">Amazon Affiliate</a> links.</p>
+		<div class="column50">
+			<h3>Tools:</h3>
+			<ul>
+				<li><a href="http://www.amazon.com/gp/product/B000S6AG9G/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B000S6AG9G&linkCode=as2&tag=wwwjohnmyrdac-20&linkId=OSYZS23HPPIDTWHK">Tri-Wing Screwdriver</a></li>
+				<li>Soldering Iron and solder</li>
+				<li>Dremel with cutting disk</li>
+				<li>Electrical Tape</li>
+				<li>Razor blade</li>
+				<li>Drill</li>
+				<li>Respiratory protection</li>
+				<ul>
+					<h4>Optional:</h4>
+					<li>De-soldering tool</li>
+					<li>filing tools</li>
+					<li>clamp</li>
+				</ul>
+			</ul>		
+		</div>
+		<div class="column50">
+			<h3>Hardware:</h3>
+			<ul>
+				<li>Old, broken Original Game Boy (check <a href="http://www.ebay.com/">eBay</a>)</li>
+				<li><a href="http://www.raspberrypi.org/products/model-b/">Raspberry Pi Model B</a>
+                    <ul>
+                        <li>If I were to redo this project, I'd likely use the newer <a href="http://www.amazon.com/gp/product/B00LPESRUK/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00LPESRUK&linkCode=as2&tag=wwwjohnmyrdac-20&linkId=4YA5524MLTDPCK6U">Raspberry Pi Model B+</a> due to improved port placement</li>
+                    </ul>
+                </li>
+				<li><a href="http://www.amazon.com/gp/product/B0034ZOAO0/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B0034ZOAO0&linkCode=as2&tag=wwwjohnmyrdac-20&linkId=M3ZXNA6KJL3YELUM">USB SNES Controller</a></li>
+				<li>Micro USB cable</li>
+				<li><a href="http://www.amazon.com/gp/product/B001EJHH20/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B001EJHH20&linkCode=as2&tag=wwwjohnmyrdac-20&linkId=YLMBPXKW3GD26GLZ">Motorola Micro USB SKN6258 Adapter for RAZR2</a>
+                    <ul>
+                        <li>This <a href="http://www.amazon.com/gp/product/B00HAOK7XE/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00HAOK7XE&linkCode=as2&tag=wwwjohnmyrdac-20&linkId=JBHHXAT3S3UFXWPY">micro USB extension cable</a> is probably a better solution than hacking together the above two items.</li>
+                    </ul>
+                </li>
+				<li><a href="http://www.amazon.com/gp/product/B00J5NSOVA/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00J5NSOVA&linkCode=as2&tag=wwwjohnmyrdac-20&linkId=U52XZCP7ZNYCQUDL">Dupont Jumper Wires</a> (with female ends)</li>
+				<li>#4-40 x 3/4 inch machine screws and nuts (check your local hardware store)</li>
+				<li>3904 npn transistor and 1k resistor</li>
+			</ul>
+		</div>
+	</div>
+	<br>
+	
+	<p>This project was a gift for my older brother. We grew up playing Sega and SNES games together and after learning about RetroPie I knew it would make the perfect gift.  My brother isn't the techie that I am so I didn't want to hand him a bare Raspberry Pi. The gift needed to be more user friendly than that. Since we both owned an original 1989 Game Boy, I decided to use the shell of the Game Boy to package the Pi.</p>
+
+	<h2>Carving Space for the Hardware</h2>
+	
+	<p>My first challenge was opening up the Game Boy. Quite a few Nintendo products are put together with a special screw that requires a <a href="http://en.wikipedia.org/wiki/List_of_screw_drives#Tri-wing">tri-wing screwdriver</a>. I searched several local stores but ended up purchasing one of these screwdrivers on Amazon. Once the case was opened I needed to figure out how to fit the Pi into the Game Boy case. Any position required compromises. I decided to use the lower left corner of the case since it exposed most of the ports that I needed and since the corner was square I could mount the Pi right up next to two edges of the case. A Dremel and pliers helped remove the plastic that comprised the battery compartment and some surrounding things until the Pi could rest comfortably.</p>
+	
+	<div class="slideshow-container">
+		<!-- prev link -->
+		<div class="slideshow-prev" id="set1-prev"></div>
+		<!-- slideshow -->
+		<div class="cycle-slideshow" 
+			data-cycle-fx="scrollHorz"
+			data-cycle-timeout="0"
+			data-cycle-prev="#set1-prev"
+			data-cycle-next="#set1-next"
+			data-cycle-auto-height="false"
+			data-cycle-slides="> a"
+			data-cycle-caption="#set1-caption"
+			data-cycle-caption-template="{{title}}"
+			data-cycle-log="false"
+			>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set1-img1.jpg" data-lightbox="piboy-set1" title="I cut out a lot of plastic to get the Raspberry Pi to fit in the Game Boy case. I put the Pi in the lower left corner because it exposed HDMI, Ethernet, and USB and it seemed easier than dealing with the rounded corner. This choice meant that I needed a microUSB extension cable to make the power port accessible from the side of the case.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set1-img1-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set1-img2.jpg" data-lightbox="piboy-set1" title="To fit the Pi, some modifications to the case had to be made. I don't entirely trust my measuring skills, so I made my cuts a little shallower than they needed to be and worked the rest of the plastic off with a metal file until the USB and Ethernet ports fit snugly.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set1-img2-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set1-img3.jpg" data-lightbox="piboy-set1" title="I made this cut a little wider because the HDMI port is slightly recessed in the Game Boy and I wanted to make sure it was easy to plug in an HDMI cable. You can see some of the plastic filings from the Game Boy case littering my desk.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set1-img3-thumb.jpg"></a>
+			
+		</div>
+		<div id="set1-caption" class="slideshow-caption"></div>
+		<div class="slideshow-next" id="set1-next"></div>
+	</div>
+
+	<p>I needed to cut out most of the Game Boy circuit boards in order to fit the Pi. There were two important elements I decided to keep from the circuit boards: the red LED on the front PCB and the power switch on the back PCB. I also wanted to retain as much PCB as possible to provide structural integrity. I de-soldered components in my cutting path and Dremeled off what I didn't need. After I started cutting I realized that PCB dust is probably a little unhealthy. I did some research and, yeah... It turns out that PCB dust can be EXTREMELY CARCINOGENIC. If you decide to try this project, please invest in a mask with a filter for fine dust particles so you don't get Cancer and die.</p>
+	
+	<div class="slideshow-container">
+		<!-- prev link -->
+		<div class="slideshow-prev" id="set2-prev"></div>
+		<!-- slideshow -->
+		<div class="cycle-slideshow" 
+			data-cycle-fx="scrollHorz"
+			data-cycle-timeout="0"
+			data-cycle-prev="#set2-prev"
+			data-cycle-next="#set2-next"
+			data-cycle-auto-height="false"
+			data-cycle-slides="> a"
+			data-cycle-caption="#set2-caption"
+			data-cycle-caption-template="{{title}}"
+			data-cycle-log="false"
+			>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set2-img1.png" data-lightbox="piboy-set2" 
+			title="The front PCB for the Game Boy. Contains the TFT Dot Matrix display and contacts for the buttons, among other things. The Red LED that I circled is the only part I wanted to keep. I feel like that LED is pretty iconic.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set2-img1-thumb.png"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set2-img2.png" data-lightbox="piboy-set2" 
+			title="The rear PCB. Attached with red and green wires is the speaker. The headphone jack is attached with the black and white wires. The large black thing is the game cartridge port, and those ICs are the CPU and RAM. All I needed from this was the power switch.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set2-img2-thumb.png"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set2-img3.jpg" data-lightbox="piboy-set2"
+			title="Close up of the power switch.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set2-img3-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set2-img4.jpg" data-lightbox="piboy-set2"
+			title="I sketched out a cutting path on the PCB in pencil that gave me enough room to fit the Pi and left all the material I wanted.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set2-img4-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set2-img5.jpg" data-lightbox="piboy-set2"
+			title="The Dremel cut through the PCB easily. It was quite dusty though. See the next slide for what I thought to buy <em>after</em> I cut this.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set2-img5-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set2-img6.jpg" data-lightbox="piboy-set2"
+			title="PCB dust can be extremely carcinogenic. I took many hardware store trips during this project but this was probably the most important one. The mask I bought filters fine dust particles and only cost about $25.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set2-img6-thumb.jpg"></a>
+			
+		</div>
+		<div id="set2-caption" class="slideshow-caption"></div>
+		<div class="slideshow-next" id="set2-next"></div>
+	</div>	
+
+	<p>Once the PCB was cut (and re-cut to fit the Pi better) I removed the Game Boy link cable port and some plastic from the front of the case in order to fit the end of a female Micro USB end for the power port. The cable that extended the power port was made of a Motorola Micro USB Adapter and a standard micro USB male connector. To make the cable, I simply found a good length for it and matched the colors of the internal wires. I also removed the rubber casing on the male end and shaved down the rubber on the female end to get the cable to fit better in the cramped case.</p>
+
+	<div class="slideshow-container">
+		<!-- prev link -->
+		<div class="slideshow-prev" id="set3-prev"></div>
+		<!-- slideshow -->
+		<div class="cycle-slideshow" 
+			data-cycle-fx="scrollHorz"
+			data-cycle-timeout="0"
+			data-cycle-prev="#set3-prev"
+			data-cycle-next="#set3-next"
+			data-cycle-auto-height="false"
+			data-cycle-slides="> a"
+			data-cycle-caption="#set3-caption"
+			data-cycle-caption-template="{{title}}"	
+			data-cycle-log="false"
+			>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set3-img1.jpg" data-lightbox="piboy-set3"
+			title="I used the front PCB as a guide to sketch out a cutting path on the rear PCB. I desoldered quite a few PCB elements before cutting.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set3-img1-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set3-img2.jpg" data-lightbox="piboy-set3"
+			title="Rear PCB after the first cut.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set3-img2-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set3-img3.jpg" data-lightbox="piboy-set3"
+			title="I spliced and shortened a male and female end of two different microUSB cables so that I could extend the Pi's power port to the outside of the case. I removed the casing from the male USB end so it would fit better. This is also the clearest picture of the screws I used to mount the Pi to the case.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set3-img3-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set3-img4.png" data-lightbox="piboy-set3"
+			title="I decided to remove the link cable port in order to fit the female end of my custom cable. IMAGE SOURCE: http://en.wikipedia.org/wiki/File:Game_Boy(RTSide).png">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set3-img4-thumb.png"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set3-img5.jpg" data-lightbox="piboy-set3"
+			title="The Game Boy link cable port on the PCB.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set3-img5-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set3-img6.jpg" data-lightbox="piboy-set3"
+			title="Another view of the link cable port that I removed.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set3-img6-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set3-img7.jpg" data-lightbox="piboy-set3"
+			title="The female microUSB end that I had was too big to fit where the link cable used to be. I used a razor blade to shave off the rubber.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set3-img7-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set3-img8.jpg" data-lightbox="piboy-set3"
+			title="I even had to remove the little plastic nub under the EXT. CONNECTOR label for the link cable port to facilitate fitting the female end of the cable.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set3-img8-thumb.jpg"></a>	
+
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set3-img9.jpg" data-lightbox="piboy-set3"
+			title="The front PCB needed more trimming to make room for the end of the power cable that I made. I lined up this cut poorly and Dremeled into the IC somewhat.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set3-img9-thumb.jpg"></a>
+
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set3-img10.jpg" data-lightbox="piboy-set3"
+			title="I removed the IC <em>after</em> cutting through half of it. I'm glad I had the dust mask at this point.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set3-img10-thumb.jpg"></a>
+			
+		</div>
+		<div id="set3-caption" class="slideshow-caption"></div>
+		<div class="slideshow-next" id="set3-next"></div>
+	</div>	
+			
+			
+	<p>I finalized the placement of the internals, found appropriately sized screws, and mounted the Pi to the Game Boy case. To mount the Pi, I drilled pilot holes where the screws needed to go and used a screwdriver to get the screws through the plastic. The plastic is relatively soft, so the screws were able to create threads in the plastic. Putting nuts on the screws mounted the Pi solidly in the case.</p>
+	
+	<p>The front of the Game Boy case didn't fit after mounting. The yellow RCA port on the Pi was hitting plastic that guided the speaker location and the A and B button locations. After a little trimming everything fit snugly. At this point I needed to decide how I actually expected my brother to use this little gaming machine and if access to the RCA video port and 3.5mm audio port was important. An Emulation Station could benefit from connectivity with TVs that don't have HDMI. However, most everyone has upgraded to flat panel TVs with HDMI inputs. I ended up drilling holes in the side of the case that allow for cables to be plugged into the Pi if the front of the case is removed. No effort was made to ensure easy access to these two ports.</p>
+
+	<div class="slideshow-container">
+		<!-- prev link -->
+		<div class="slideshow-prev" id="set4-prev"></div>
+		<!-- slideshow -->
+		<div class="cycle-slideshow" 
+			data-cycle-fx="scrollHorz"
+			data-cycle-timeout="0"
+			data-cycle-prev="#set4-prev"
+			data-cycle-next="#set4-next"
+			data-cycle-auto-height="false"
+			data-cycle-slides="> a"
+			data-cycle-caption="#set4-caption"
+			data-cycle-caption-template="{{title}}"
+			data-cycle-log="false"
+			>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set4-img1.jpg" data-lightbox="piboy-set4" 
+			title="The yellow RCA port was butting up against the plastic that guides the buttons. I had to remove that plastic to get the case together properly.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set4-img1-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set4-img2.jpg" data-lightbox="piboy-set4" 
+			title="Before and after of the plastic I removed to get the case to fit back together. This was done through trial and error until everything fit. In the image on the right you can see where I drilled holes in the side of the case for the RCA video and 3.5mm audio wire to go through.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set4-img2-thumb.jpg"></a>
+			
+		</div>
+		<div id="set4-caption" class="slideshow-caption"></div>
+		<div class="slideshow-next" id="set4-next"></div>
+	</div>
+	
+	<h2>Setting up RetroPie</h2>
+	
+	<p>With everything physically in place I could began to focusing on the software side of the Pi. My Raspberry Pi uses the <a href="http://blog.petrockblock.com/download/retropie-project-sd-card-image-torrent/">RetroPie SD card image</a>. I configured RetroPie by following the instructions found at <a href="http://supernintendopi.wordpress.com/">supernintendopi.wordpress.com</a>, which were incredibly helpful.  I ran into a sound issue that I solved by following <a href="http://elinux.org/R-Pi_Troubleshooting#Sound_does_not_work_with_an_HDMI_monitor">these instructions</a>. Basically, in the file <code>/boot/config.txt</code> I needed to set <code>hdmi_drive = 2</code> to force sound through HDMI.</p>
+	
+	<p>In order for games to save properly via the RetroArch emulator, make sure there that in the <code>~/RetroPie/configs/all/retroarch.cfg</code> file there is an uncommented entry for <code>autosave_interval</code>. I set mine to <code>autosave_interval = 5</code> meaning that every 5 seconds the emulator will make sure that save files are updated. The save files normally update when the emulator is cleanly exited, but that doesn't always happen.</p>
+	
+	<p>Also, I managed to purchase two slightly different SNES USB controllers that required different configurations in software. Player 1 and Player 2 required slightly different mappings in <code>~/RetroPie/configs/all/retroarch.cfg</code>. The <code>retroarch-joyconfig</code> utility can be used to figure out how buttons are mapped.  After proper configuration it's possible to completely control the Pi with a controller. Well, almost. There's no way to safely shut down without a keyboard or SSH.</p>
+	
+	<h2>Soldering and Circuitry</h2>
+	
+	<p>The red LED and power switch from earlier needed circuitry to interface with the Pi as I wanted them to.  I used a multimeter to deduce the circuitry of the power switch. There are four easily accessible pins on the back of the switch that are connected in pairs of two. For example, if we number the pins 1,2,3 and 4, pins 1-2 are connected in the OFF position and pins 3-4 are connected in the ON position. The red LED required more effort to hook up to the Pi because it requires 5V power to light up bright red, and the GPIO pins max out at 3.3V. Thankfully, there's a few 5V power pins on the Pi so lighting up the LED only required an extra transistor and resistor. Initially I was concerned that I wouldn't have a good place to mount these pieces but the Game Boy PCB had 3-hole circuit elements that I de-soldered and replaced with my circuit. With the circuit wired up I could easily turn the LED on and off via Python scripts. As a side note, the Dupont wires I cut up and soldered to the PCB were just slightly too tall to fit in the Game Boy case so I ended up having to trim off a few mm of plastic in order to fit them.</p>
+
+	<div class="slideshow-container">
+		<!-- prev link -->
+		<div class="slideshow-prev" id="set5-prev"></div>
+		<!-- slideshow -->
+		<div class="cycle-slideshow" 
+			data-cycle-fx="scrollHorz"
+			data-cycle-timeout="0"
+			data-cycle-prev="#set5-prev"
+			data-cycle-next="#set5-next"
+			data-cycle-auto-height="false"
+			data-cycle-slides="> a"
+			data-cycle-caption="#set5-caption"
+			data-cycle-caption-template="{{title}}"		
+			data-cycle-log="false"
+			>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set5-img1.jpg" data-lightbox="piboy-set5"
+			title="I needed to know exactly how the power switch functioned in order to write the Python script that interacts with it. This is the diagram I created after investigating with a multimeter.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set5-img1.jpg"></a>
+
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set5-img2.jpg" data-lightbox="piboy-set5"
+			title="I needed to mount a transistor to the PCB to create the circuit for the red LED. Thankfully, the Game Boy PCB had a few 3 hole circuit elements I didn't need which allowed me to mount the transistor and resistor easily.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set5-img2-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set5-img3.jpg" data-lightbox="piboy-set5"
+			title="Rear view of the 3 hole circuit elements. They were easy to remove.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set5-img3-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set5-img4.jpg" data-lightbox="piboy-set5"
+			title="The working GPIO LED circuit. A GPIO pin turns on the transistor which in turn provides the 5V needed for the LED to glow red.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set5-img4-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set5-img5.jpg" data-lightbox="piboy-set5"
+			title="This is the backside of that circuit. You can see the 2N3904 transistor which aids in controlling the LED. The red wire is the control wire coming from the Pi.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set5-img5-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set5-img6.jpg" data-lightbox="piboy-set5"
+			title="The final product with all of the wires attached. You can also see how I mounted the Pi to the case with the #4-40 x 3/4 inch machine screws and nuts.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set5-img6-thumb.jpg"></a>
+
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set5-img7.jpg" data-lightbox="piboy-set5"
+			title="Close up of the Dupont jumper wire. I had to remove about 2mm of plastic so that the case of the Game Boy would actually close with the circuits attached.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set5-img7-thumb.jpg"></a>
+						
+		</div>
+		<div id="set5-caption" class="slideshow-caption"></div>
+		<div class="slideshow-next" id="set5-next"></div>
+	</div>	
+	
+	<p>Much like a power switch on a PC, my switch doesn't actually cut power to the entire device. Instead, a <a href="startup.py">python script</a> that I wrote detects when the switch is in the OFF position and runs the <code>poweroff</code> command. This safely shuts down the Pi and helps avoid SD card corruption. The script gets called when the Pi boots by a custom <a href="rc.local"><code>\etc\rc.local</code></a> file. I originally attempted to use a cron job to run the script but the <code>poweroff</code> command didn't work.  If you plan on using the Pi in any of your projects, take a look at the <a href="http://sourceforge.net/p/raspberry-gpio-python/wiki/Home/">wiki pages for the RPi.GPIO python package</a>. The switch can also turn the Pi back on by jumping pin 5 and ground on the P1 header as described by the documentation on <a href="http://elinux.org/RPI_safe_mode">RPI safe mode</a>. Jumping those pins normally boots the Pi into safe mode, but I disabled safe mode by setting <code>avoid_safe_mode = 1</code> in <code>/boot/config.txt</code>.</p>
+	
+	<h2>Giving the Gift of Game</h2>
+	<p>
+	This project was a gift for my brother, and with software and hardware finally working harmoniously I needed to work on presentation. I super glued the Game Boy buttons to the case and printed out a custom and personalized cutout for where the screen used to be. Wires were tucked and I screwed in the three remaining tri-wing screws, completing the project. Over Thanksgiving break I presented the Piboy to my brother and we relived a little bit of the past with Street Fighter II and Sonic.  He had no trouble figuring out how to use the tiny console, though I may have to teach him how to use SSH one of these days.
+	
+	<div class="slideshow-container">
+		<!-- prev link -->
+		<div class="slideshow-prev" id="set6-prev"></div>
+		<!-- slideshow -->
+		<div class="cycle-slideshow" 
+			data-cycle-fx="scrollHorz"
+			data-cycle-timeout="0"
+			data-cycle-prev="#set6-prev"
+			data-cycle-next="#set6-next"
+			data-cycle-auto-height="false"
+			data-cycle-slides="> a"
+			data-cycle-caption="#set6-caption"
+			data-cycle-caption-template="{{title}}"
+			data-cycle-log="false"
+			>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set6-img1.jpg" data-lightbox="piboy-set6" 
+			title="Front view of the finished product. Here you can see where the HDMI, USB controllers, and power all connect.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set6-img1-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set6-img2.jpg" data-lightbox="piboy-set6" 
+			title="Side view. On the right is the power port that I extended with that custom microUSB cable. Those two holes are there for the RCA Video and 3.5mm audio wires to go through. The case has to be taken apart to attach them, though.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set6-img2-thumb.jpg"></a>
+
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set6-img3.jpg" data-lightbox="piboy-set6" 
+			title="Another image of the final product with everything connected.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set6-img3-thumb.jpg"></a>
+			
+			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/piboy-set6-img4.jpg" data-lightbox="piboy-set6" 
+			title="Hooked up to the TV and playing a Sega game.">
+			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/piboy/thumbs/piboy-set6-img4-thumb.jpg"></a>			
+		</div>
+		<div id="set6-caption" class="slideshow-caption"></div>
+		<div class="slideshow-next" id="set6-next"></div>
+	</div>	
+	</p>
+</div>
+
+<!--#include virtual="/ssi/projects-navigation-comments.shtml" -->
+
+<!--#include virtual="/ssi/footer.html" -->
