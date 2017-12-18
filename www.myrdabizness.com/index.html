@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>Myrda Bizness</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="inc/jquery.mb.YTPlayer.js"></script>
+	<link href="css/YTPlayer.css" media="all" rel="stylesheet" type="text/css">
+    <style>
+        body{
+            background: #000000;
+        }
+    </style>
+
+<script>
+		$(function(){
+$(document).ready("YTPStart", function(){ 
+        $("#loading").fadeOut(3000)});
+        $("#bgndVideo").mb_YTPlayer();
+  });
+</script>    
+</head>
+<body>
+
+<a id="bgndVideo" class="player" data-property="{videoURL:'RzI9VQUHJkU', showControls:false, ratio:'16/9', autoPlay:true, loop:true, vol:70, mute:false, startAt:5, opacity:1, addRaster:true, quality:'default'}">My video</a> <!--BsekcY04xvQ-->
+
+</body>
+</html>
