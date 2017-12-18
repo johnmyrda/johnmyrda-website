@@ -2,4 +2,4 @@ AddType text/html .shtml
 AddHandler server-parsed .shtml
 Options Indexes FollowSymLinks Includes
 
-Redirect 301 /projects/index.html http://dev.johnmyrda.com/
+Redirect 301 /projects/index.html http://www.johnmyrda.com/
