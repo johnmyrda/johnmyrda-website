@@ -5,11 +5,11 @@
 <div id="about_me" class="column50">
     <h1>Get to know me!</h1>
     <br>
-    <p>I grew up in Chicago, learned to code at the University of Illinois at Champaign, and I recently moved to the West Coast in search of work as a Software Engineer.<p>
+    <p>I grew up in Chicago, learned to code at the University of Illinois at Champaign, and moved to the San Francisco to work as a Software Engineer.<p>
     <br>
     <ul>
         <li>I'm a bit of a hacker. Read about my <a href="/">PROJECTS</a>.</li>
-        <li>I'm looking for work. Here's my <a href=/resume/johnmyrda_resume.pdf>RESUME</a>.</li>
+        <li>I'm looking for work. Here's my <a href=https://github.com/johnmyrda/resume/blob/master/johnmyrda_resume.pdf>RESUME</a>.</li>
         <li>On that note, here's my profile on <a href="https://www.linkedin.com/in/johnmyrda">LinkedIn</a>.</li>
         <li>I write code and some of it is on <a href="https://github.com/johnmyrda">GITHUB</a>.</li>
         <li>Contact me via <a href="mailto:hello@johnmyrda.com">hello@johnmyrda.com</a></li>
