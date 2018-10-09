@@ -35,7 +35,7 @@
 				<li><a href="http://www.staples.com/Staples-Easy-Button/product_606396">Staples "Easy" Button</a></li>
 				<li><a href="http://www.ti.com/ww/en/launchpad/launchpads-msp430-msp-exp430g2.html">TI MSP430 MicroController (MSP430G2553)</a></li>
 				<li><a href="http://www.mouser.com/ds/2/427/tdsg11-240381.pdf">Three 7 Segment LED display - TDSO1150</a></li>
-				<li><a href="http://www.radioshack.com/product/index.jsp?productId=2062640">Super Tiny Wiring</a></li>
+				<li><a href="https://www.radioshack.com/products/wrapping-wire">Super Tiny Wiring</a></li>
 				<li>Three 2N3906 PNP Transistors</li>
 				<li>Eight 100 Ω and Three 390 Ω Resistors</li>
 			</ul>
@@ -414,7 +414,7 @@ void set_countdown_time(){//sets countdown time to current display number
 	<br>
 	<h3>References:</h3>
 	<ul>
-		<li><a href="http://www.ti.com/lit/an/slaa076a/slaa076a.pdf">Implementing a Real-Time Clock on the MSP430 (.pdf)</a></li>
+		<li><a href="http://www.ti.com/lit/an/slaa290a/slaa290a.pdf">Implementing a Real-Time Clock on the MSP430 (.pdf)</a></li>
 		<li><a href="http://www.ti.com/lit/ml/slap113/slap113.pdf">MSP430 Timers In-Depth (.pdf)</a></li>
 		<li><a href="http://www.mouser.com/ProductDetail/Vishay-Semiconductors/TDSO1150/?qs=eYIhD8NViE1AOTGvXuhtdA==">Mouser Product Page for TDSO1150</a></li>
 		<li><a href="http://www.mouser.com/ds/2/427/tdsg11-240381.pdf#datasheet">TDSO1150 Datasheet</a></li>
