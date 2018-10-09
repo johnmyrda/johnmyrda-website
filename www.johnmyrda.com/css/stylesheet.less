@@ -308,74 +308,7 @@ html, body {
 	width: 50%;
 }
 
-/*slideshow styles*/
-@slideshow-img-width: 480px;
-@slideshow-img-height: 270px;
-@slideshow-caption-height: 50px;
-.slideshow-container{
-	position: relative;
-	width: @slideshow-img-width;
-	height: @slideshow-img-height + @slideshow-caption-height;
-	width: @slideshow-img-width;
-	margin: 20px auto;
-}
-
-.slideshow-backstretch{
-	width: @slideshow-img-width;
-	height: @slideshow-img-height;
-}
-
-.cycle-slideshow {
-//	border: 2px solid black;
-	width: @slideshow-img-width;
-	height: @slideshow-img-height;
-	overflow: hidden;
-}
-
-@slideshow-nav-height: @slideshow-img-height * .25;
-@slideshow-nav-width: @slideshow-img-width / 16;
-@slideshow-nav-base-grey: #888888;
-.slideshow-nav{
-	position: absolute;
-	top: @slideshow-nav-width * 3;
-	cursor: pointer;
-	opacity: .8;
-	background-color: black;
-	width: 0;
-	height: 0;
-	border-style: solid;	
-}
-
-.slideshow-prev{
-	.slideshow-nav;
-	left: @slideshow-nav-width * -1;
-	border-width: @slideshow-nav-width @slideshow-nav-width @slideshow-nav-width 0;
-	border-color: transparent @slideshow-nav-base-grey transparent transparent;
-	-moz-border-radius: @site-border-radius-left;
-	-webkit-border-radius: @site-border-radius-left;
-	border-radius: @site-border-radius-left;	
-	&:hover {	border-color: transparent lighten(@slideshow-nav-base-grey, 20%) transparent transparent;	}
-}
-
-.slideshow-next{
-	.slideshow-nav;
-	right: @slideshow-nav-width * -1;
-	-moz-border-radius: @site-border-radius-right;
-	-webkit-border-radius: @site-border-radius-right;
-	border-radius: @site-border-radius-right;	
-	border-width: @slideshow-nav-width 0 @slideshow-nav-width @slideshow-nav-width;
-	border-color: transparent transparent transparent @slideshow-nav-base-grey;
-	&:hover {	border-color: transparent transparent transparent lighten(@slideshow-nav-base-grey, 20%);	}	
-}
-
-.cycle-slideshow a {
-	width: 100%;
-}
-
-.cycle-slideshow img {
-	width: 100%;
-}
-
-.slideshow-caption{
-	font-size: 12px;
+/*instagram styles*/
+.instagram-media{
+	margin: 15px auto !important;
 }

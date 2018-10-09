@@ -47,153 +47,121 @@
 
 	<p>I call it "Speed Settlers". The idea is that each turn only lasts a limited amount of time, thus moving the game along. I tried playing it with a smartphone timer app, but messing around with the app timer distracted from the game. What I really needed was a big red buzzer with a countdown timer. I decided to build it.</p>
 
-	<div class="slideshow-container">
-		<!-- prev link -->
-		<!-- slideshow -->
-		<div class="cycle-slideshow" 
-			data-cycle-slides="> a"
-			data-cycle-caption="#set1-caption"
-			data-cycle-caption-template="{{title}}"
-            data-cycle-auto-height="false"
-			>
-			
-			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set1-img1.jpg" data-lightbox="easy_button-set1" title="My friends and I love playing Settlers, but sometimes the games can drag. That's why we came up with a variant I like to call &quot;Speed Settlers&quot;">
-			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set1-img1-thumb.jpg"></a>
-			
-		</div>
-		<div id="set1-caption" class="slideshow-caption"></div>
-	</div>
+		<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/BdBSGGKFM80/?utm_source=ig_embed&amp;utm_medium=loading&amp;utm_campaign=embed_loading_state_control"
+		 data-instgrm-version="9" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+			<div style="padding:8px;">
+				<div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50% 0; text-align:center; width:100%;">
+					<div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div>
+				</div>
+				<p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BdBSGGKFM80/?utm_source=ig_embed&amp;utm_medium=loading&amp;utm_campaign=embed_loading_state_control"
+					 style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;"
+					 target="_blank">The &#34;Easy Button&#34; Countdown timer. My first serious electronics project! Made out of an
+						Easy Button, 7 segment displays, and a TI microcontroller. #electronics #diy #easybutton #firstproject
+						#microcontroller #msp430 #2013</a></p>
+				<p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A
+					post shared by <a href="https://www.instagram.com/gglii/?utm_source=ig_embed&amp;utm_medium=loading&amp;utm_campaign=embed_loading_state_control"
+					 style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;"
+					 target="_blank"> John Myrda</a> (@gglii) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;"
+					 datetime="2017-12-22T21:44:02+00:00">Dec 22, 2017 at 1:44pm PST</time></p>
+			</div>
+		</blockquote>
+		<script async defer src="//www.instagram.com/embed.js"></script>
+	
+	<p>The Staples "Easy Button" was the perfect base for the project. It already had almost everything I needed! The Easy
+		Button contains a speaker, battery compartment, on/off switch, and of course, a button. With a properly programmed
+		microcontroller, the button could do exactly what I needed. I chose the MSP430 platform (TI Launchpad) for this
+		project because there exists an IDE for that is virtually identical to the <a href="http://arduino.cc/en/main/software">Arduino
+			IDE</a>, which I was already familiar with. Additionally, the Launchpad uses less power than the Arduio. The drawback
+		is that it's also slower than the Arduino, but it was more than fast enough for this project. The microcontroller chip
+		used was the MSP430G2553.</p>
+	
+	<p>The button needed a display for the countdown timer. I used the <a href="http://www.mouser.com/ProductDetail/Vishay-Semiconductors/TDSO1150/?qs=eYIhD8NViE1AOTGvXuhtdA==">TDSO1150
+			7 segment display</a> because it's tiny and bright. I used three of these 7 segment displays to create a display
+		capable of displaying numbers 000 through 999. I was able to fit this LED display in the housing of the Easy Button
+		without much issue. The wire that I used (which will forever be the bane of my existence) was <a href="http://www.radioshack.com/product/index.jsp?productId=2062640">30
+			gauge wire I found at Radioshack</a>. The small diameter was a gift and a curse. I also used some simple pushbutton
+		switches so that I could set the countdown time easily.</p>
+		
+		<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/BdBUfIzl5_j/?utm_source=ig_embed&amp;utm_medium=loading&amp;utm_campaign=embed_loading_state_control"
+		 data-instgrm-version="9" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+			<div style="padding:8px;">
+				<div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50% 0; text-align:center; width:100%;">
+					<div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div>
+				</div>
+				<p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BdBUfIzl5_j/?utm_source=ig_embed&amp;utm_medium=loading&amp;utm_campaign=embed_loading_state_control"
+					 style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;"
+					 target="_blank">The 7 segment displays have 21 control wires (3x7). I multiplexed them so I only needed 10 pins on
+						the microcontroller. This means only one of them is on at a time and they each blink on and off 85 times a second!
+						#electronics #diy #easybutton #firstproject #microcontroller #transistors #multiplexing #7segment #prototype #2013</a></p>
+				<p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A
+					post shared by <a href="https://www.instagram.com/gglii/?utm_source=ig_embed&amp;utm_medium=loading&amp;utm_campaign=embed_loading_state_control"
+					 style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;"
+					 target="_blank"> John Myrda</a> (@gglii) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;"
+					 datetime="2017-12-22T22:04:56+00:00">Dec 22, 2017 at 2:04pm PST</time></p>
+			</div>
+		</blockquote>
+		<script async defer src="//www.instagram.com/embed.js"></script>
+	
+	<p>The most difficult part of this project was figuring out how to wire and use the LED displays. The <a href="http://www.mouser.com/ds/2/427/tdsg11-240381.pdf">datasheet</a>
+		was helpful in providing information on how to light up individual segments, but I needed to drive three of these 7
+		segment displays simultaneously. There are not enough pins on the MSP430G2553 to light up 21 individual segments
+		(there are only 20 pins total!), so I decided to use a <a href="http://en.wikipedia.org/wiki/Multiplexing">multiplexing</a>
+		solution. Multiplexing allowed me to use 7 pins to control which segments were lit up and 3 control pins to decide
+		which 7 segment display was lit up at any particular time. Wiring this circuit allowed me to turn on the displays
+		individually and quickly alternate between which display was lit up. Using this method I was able to achieve an 85Hz
+		refresh rate per display. This <a href="http://maxembedded.com/2013/01/30/seven-segment-multiplexing/">embedded
+			electronics blog</a> was helpful in providing an understanding of how to create a multiplexing circuit and what the
+		code for such a circuit looks like.</p>
+	
+	<p>The circuit used for multiplexing uses eight of the MSP430G2553's pins to light up individual LEDs on the seven
+		segment displays (seven pins for the segments, one for the dot). The displays used are common anode displays, which
+		necessitated the use of PNP transistors. This choice is also why some of the code may seem backwards. With common
+		anode displays, a <code>HIGH</code> signal on a pin turns the segment off, and <code>LOW</code> turns a segment on.
+		Three of the microcontroller's lines are dedicated to the transistors, and these control lines are used to turn
+		individual displays on or off. The resistors used with the LED displays were chosen to maximize brightness, and the
+		resistors used on the base of the transistors were chosen based on blogs that I read which used similar equipment.</p>
 
-	<div class="slideshow-container">
-		<!-- prev link -->
-		<!-- slideshow -->
-		<div class="cycle-slideshow" 
-			data-cycle-slides="> a"
-			data-cycle-caption="#set1-1-caption"
-			data-cycle-caption-template="{{title}}"
-            data-cycle-auto-height="false"
-			>
-			
-			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set1-img2.jpg" data-lightbox="easy_button-set1" title="The Easy Button was a great base for this project. It contains all of the basic components that I needed, including a power source, on/off switch, speaker, and of course the big red button.">
-			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set1-img2-thumb.jpg"></a>
-			
-		</div>
-		<div id="set1-1-caption" class="slideshow-caption"></div>
-	</div>
+	<p>I spent a long of time thinking about the user interface of the button. At one point I even drew a <a href="http://en.wikipedia.org/wiki/Deterministic_finite_automaton">DFA
+			diagram</a> describing the user interface, which was less than useful once I realized there are essentially only two
+		button states: "Countdown" and "Time Setting". The idea of "Countdown mode" is simple: have the display count down to
+		zero from a specified number of seconds and play a tone once the timer reaches 0. The countdown time is between 1 and
+		999 since those are the limits of the three LED displays. Programming "Countdown mode" was simple once I had figured
+		out how to detect edge interrupts to see when the Easy Button was pressed. For more on that, check out the Code Review
+		section.</p>
 	
-	<p>The Staples "Easy Button" was the perfect base for the project. It already had almost everything I needed! The Easy Button contains a speaker, battery compartment, on/off switch, and of course, a button. With a properly programmed microcontroller, the button could do exactly what I needed. I chose the MSP430 platform (TI Launchpad) for this project because there exists an IDE for that is virtually identical to the <a href="http://arduino.cc/en/main/software">Arduino IDE</a>, which I was already familiar with. Additionally, the Launchpad uses less power than the Arduio. The drawback is that it's also slower than the Arduino, but it was more than fast enough for this project. The microcontroller chip used was the MSP430G2553.</p>
-	
-	<p>The button needed a display for the countdown timer. I used the <a href="http://www.mouser.com/ProductDetail/Vishay-Semiconductors/TDSO1150/?qs=eYIhD8NViE1AOTGvXuhtdA==">TDSO1150 7 segment display</a> because it's tiny and bright.  I used three of these 7 segment displays to create a display capable of displaying numbers 000 through 999. I was able to fit this LED display in the housing of the Easy Button without much issue. The wire that I used (which will forever be the bane of my existence) was <a href="http://www.radioshack.com/product/index.jsp?productId=2062640">30 gauge wire I found at Radioshack</a>. The small diameter was a gift and a curse. I also used some simple pushbutton switches so that I could set the countdown time easily.</p>
+	<p>Given that are two execution modes for the button, a way to switch between modes was needed. Switching modes is
+		accomplished by holding down the Easy Button for an extended length of time. The logic for "Time Setting mode"
+		required more complexity than the "Countdown mode". I used two pushbuttons to increment digits in the time setting
+		mode. Pressing one of the pushbuttons changes which digit is selected. The digit that is currently selected flashes in
+		order to indicate the selection. Pressing the other pushbutton increments the selected digit by one, and the selected
+		digit wraps from 9 to 0. This approach leads to very quick timer setting since you don't have to scroll through all
+		1000 possible numbers available on the LED display to set a time, you instead set the digits in the hundreds, tens,
+		and ones places separately.</p>
 
-	<div class="slideshow-container">
-		<!-- prev link -->
-		<div class="slideshow-prev" id="set2-prev"></div>
-		<!-- slideshow -->
-		<div class="cycle-slideshow" 
-			data-cycle-fx="scrollHorz"
-			data-cycle-timeout="0"
-			data-cycle-prev="#set2-prev"
-			data-cycle-next="#set2-next"
-			data-cycle-auto-height="false"
-			data-cycle-slides="> a"
-			data-cycle-caption="#set2-caption"
-			data-cycle-caption-template="{{title}}"
-			data-cycle-log="false"
-			>
-			
-			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set2-img1.jpg" data-lightbox="easy_button-set2" title='These LEDs worked well as the timer display for this project, though due to their small size they were quite difficult to solder to the wires. They are the TDSO1150 red-orange LED, and the datasheet can be found at <a href="http://www.mouser.com/ds/2/427/tdsg11-240381.pdf">http://www.mouser.com/ds/2/427/tdsg11-240381.pdf</a>'>
-			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set2-img1-thumb.jpg"></a>
-			
-			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set2-img2.jpg" data-lightbox="easy_button-set2" title="I used an old PCB I had lying around to solder all of the resistors and transistors to for the control circuit.">
-			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set2-img2-thumb.jpg"></a>
-			
-			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set2-img3.jpg" data-lightbox="easy_button-set2" title="When coding, I focused first on getting individual LEDs to light up. In this picture you can tell that some wires are crossed because there are segments lighting up that aren't supposed to.">
-			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set2-img3-thumb.jpg"></a>
-			
-			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set2-img4.jpg" data-lightbox="easy_button-set2" title="After a bit more code, I got multiplexing working so that I could light up all of the LED displays at once. The refresh rate is about 85 Hz.">
-			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set2-img4-thumb.jpg"></a>			
-			
-		</div>
-		<div id="set2-caption" class="slideshow-caption"></div>
-		<div class="slideshow-next" id="set2-next"></div>
-	</div>	
-	
-	<p>The most difficult part of this project was figuring out how to wire and use the LED displays. The <a href="http://www.mouser.com/ds/2/427/tdsg11-240381.pdf">datasheet</a> was helpful in providing information on how to light up individual segments, but I needed to drive three of these 7 segment displays simultaneously. There are not enough pins on the MSP430G2553 to light up 21 individual segments (there are only 20 pins total!), so I decided to use a <a href="http://en.wikipedia.org/wiki/Multiplexing">multiplexing</a> solution. Multiplexing allowed me to use 7 pins to control which segments were lit up and 3 control pins to decide which 7 segment display was lit up at any particular time. Wiring this circuit allowed me to turn on the displays individually and quickly alternate between which display was lit up. Using this method I was able to achieve an 85Hz refresh rate per display. This <a href="http://maxembedded.com/2013/01/30/seven-segment-multiplexing/">embedded electronics blog</a> was helpful in providing an understanding of how to create a multiplexing circuit and what the code for such a circuit looks like.</p>		
-	
-	<p>The circuit used for multiplexing uses eight of the MSP430G2553's pins to light up individual LEDs on the seven segment displays (seven pins for the segments, one for the dot). The displays used are common anode displays, which necessitated the use of PNP transistors. This choice is also why some of the code may seem backwards. With common anode displays, a <code>HIGH</code> signal on a pin turns the segment off, and <code>LOW</code> turns a segment on. Three of the microcontroller's lines are dedicated to the transistors, and these control lines are used to turn individual displays on or off. The resistors used with the LED displays were chosen to maximize brightness, and the resistors used on the base of the transistors were chosen based on blogs that I read which used similar equipment.</p>
-	
-	<div class="slideshow-container">
-		<!-- prev link -->
-		<div class="slideshow-prev" id="set3-prev"></div>
-		<!-- slideshow -->
-		<div class="cycle-slideshow" 
-			data-cycle-fx="scrollHorz"
-			data-cycle-timeout="0"
-			data-cycle-prev="#set3-prev"
-			data-cycle-next="#set3-next"
-			data-cycle-auto-height="false"
-			data-cycle-slides="> a"
-			data-cycle-caption="#set3-caption"
-			data-cycle-caption-template="{{title}}"
-			data-cycle-log="false"
-			>
+		<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/BdBa0aJlkSp/?utm_source=ig_embed&amp;utm_medium=loading&amp;utm_campaign=embed_loading_state_control"
+		 data-instgrm-version="9" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+			<div style="padding:8px;">
+				<div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50% 0; text-align:center; width:100%;">
+					<div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div>
+				</div>
+				<p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BdBa0aJlkSp/?utm_source=ig_embed&amp;utm_medium=loading&amp;utm_campaign=embed_loading_state_control"
+					 style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;"
+					 target="_blank">Hit the big red button to reset the countdown clock, and use the tiny side buttons to set the
+						total
+						countdown time. Great for fast paced games! This took many hours of designing, cutting, filing, soldering, coding,
+						and debugging. #electronics #diy #easybutton #schematic #firstproject#finishedproject #microcontroller #2013</a></p>
+				<p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A
+					post shared by <a href="https://www.instagram.com/gglii/?utm_source=ig_embed&amp;utm_medium=loading&amp;utm_campaign=embed_loading_state_control"
+					 style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;"
+					 target="_blank"> John Myrda</a> (@gglii) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;"
+					 datetime="2017-12-22T23:00:16+00:00">Dec 22, 2017 at 3:00pm PST</time></p>
+			</div>
+		</blockquote>
+		<script async defer src="//www.instagram.com/embed.js"></script>
 
-			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-schematic.png" data-lightbox="easy_button-set3" title="A simplified schematic of the circuit used in this project. Details the circuitry used to control the three seven segment LED displays.">
-			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-schematic-thumb.png"></a>
-			
-			
-			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set3-img1.jpg" data-lightbox="easy_button-set3" title="Using a multimeter, I figured out which contacts to use with the Easy Button's main button. I soldered wires in the appropriate spots and connected them to the microcontroller.">
-			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set3-img1-thumb.jpg"></a>
-			
-			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set3-img2.jpg" data-lightbox="easy_button-set3" title="These holes were used to mount some simple tactile pushbutton switches. I glued the buttons on to relieve undue stress from using the buttons.">
-			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set3-img2-thumb.jpg"></a>
-			
-			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set3-img3.jpg" data-lightbox="easy_button-set3" title="I used a wire wrap technique to connect the wires to the DIP socket. After wrapping each pin I soldered on the wire for a more solid and stable connection. I had to snip off the legs of the socket to get it to fit inside the button.">
-			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set3-img3-thumb.jpg"></a>
-			
-			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set3-img4.jpg" data-lightbox="easy_button-set3" title="The legs all needed to be snipped to fit inside the button housing. Also, this imagae shows the transistor and resistor based control circuit for the LED multiplexing.">
-			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set3-img4-thumb.jpg"></a>			
-			
-		</div>
-		<div id="set3-caption" class="slideshow-caption"></div>
-		<div class="slideshow-next" id="set3-next"></div>
-	</div>	
-
-	<p>I spent a long of time thinking about the user interface of the button. At one point I even drew a <a href="http://en.wikipedia.org/wiki/Deterministic_finite_automaton">DFA diagram</a> describing the user interface, which was less than useful once I realized there are essentially only two button states: "Countdown" and "Time Setting". The idea of "Countdown mode" is simple: have the display count down to zero from a specified number of seconds and play a tone once the timer reaches 0. The countdown time is between 1 and 999 since those are the limits of the three LED displays. Programming "Countdown mode" was simple once I had figured out how to detect edge interrupts to see when the Easy Button was pressed. For more on that, check out the Code Review section.</p>
-	
-	<p>Given that are two execution modes for the button, a way to switch between modes was needed. Switching modes is accomplished by holding down the Easy Button for an extended length of time. The logic for "Time Setting mode" required more complexity than the "Countdown mode". I used two pushbuttons to increment digits in the time setting mode. Pressing one of the pushbuttons changes which digit is selected. The digit that is currently selected flashes in order to indicate the selection. Pressing the other pushbutton increments the selected digit by one, and the selected digit wraps from 9 to 0. This approach leads to very quick timer setting since you don't have to scroll through all 1000 possible numbers available on the LED display to set a time, you instead set the digits in the hundreds, tens, and ones places separately.</p>
-
-	<div class="slideshow-container">
-		<!-- prev link -->
-		<div class="slideshow-prev" id="set4-prev"></div>
-		<!-- slideshow -->
-		<div class="cycle-slideshow" 
-			data-cycle-fx="scrollHorz"
-			data-cycle-timeout="0"
-			data-cycle-prev="#set4-prev"
-			data-cycle-next="#set4-next"
-			data-cycle-auto-height="false"
-			data-cycle-slides="> a"
-			data-cycle-caption="#set4-caption"
-			data-cycle-caption-template="{{title}}"
-			data-cycle-log="false"
-			>
-			
-			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set4-img1.jpg" data-lightbox="easy_button-set4" title="After a lot of careful cutting and filing, I managed to fit everything together. Here's the contraption with its top off. In the background you can see the springs used to provide a satisfying tactile sensation for the Easy Button.">
-			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set4-img1-thumb.jpg"></a>
-			
-			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set4-img2.jpg" data-lightbox="easy_button-set4" title="An action shot of the countdown timer all put together. Thanks to the battery compartment it is completely standalone. ">
-			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set4-img2-thumb.jpg"></a>
-			
-			<a href="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/easy_button-set4-img3.jpg" data-lightbox="easy_button-set4" title="The push-button switches used to set the countdown time for the button.">
-			<img src="https://dl.dropboxusercontent.com/u/124832619/www/projects/easy_button/thumbs/easy_button-set4-img3-thumb.jpg"></a>		
-			
-		</div>
-		<div id="set4-caption" class="slideshow-caption"></div>
-		<div class="slideshow-next" id="set4-next"></div>
-	</div>		
-	
-	<p>To complete the project, the MSP430G2553 needed to work when not attached to the programmer board. Attaching the reset pin to the ground pin accomplishes this. It took a lot of careful cutting, filing, and soldering, but eventually everything came together and the Speed Settlers button was a reality!</p>
+	<p>To complete the project, the MSP430G2553 needed to work when not attached to the programmer board. Attaching the
+		reset pin to the ground pin accomplishes this. It took a lot of careful cutting, filing, and soldering, but eventually
+		everything came together and the Speed Settlers button was a reality!</p>
 
 <!-- including relevant syntax highlighting javascript pieces -->
 <script type="text/javascript" src="/js/prism.js"></script>
